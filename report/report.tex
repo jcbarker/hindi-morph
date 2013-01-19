@@ -52,19 +52,24 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-\nascomment{one paragraph here summarizing what the paper is about}
+This a report on the development of HindiMorph, an open source morphological analyzer for Hindi. Hindi is a morphologically rich language for which I have created an analyzer. I present a brief background on the language and the phenomena I hope to analyze. Existing work on and tools for Hindi morphology are then reviewed. After that I explain the system design and document my progress, results and ideas for future work. 
 \end{abstract}
 
-\nascomment{brief introduction}
+HindiMorph is an open source morphological analyzer for the Hindi language. Being a morphologically rich language, Hindi may be easier to work with when it's morphemes are tagged instead of just using the surface forms found in text. This report provides a brief introduction to the Hindi language and covers the morphological phenomina that HindiMorph hopes to analyze, in addition to summarizing previous work and other existing tools. It also documents the design of the system as well as it's development and performance.
 
 \section{Basic Information about Hindi}
-According to \cite{ethnologue}, Hindi (also Khadi Boli or Khari Boli) is an Indo-European language from India that is spoken by 181,676,620 people world-wide. Much of its formal vocabulary comes from Sanskrit. An official language of India, Hindi is a fully developed language written in the Devanagari script.\\
+According to \cite{ethnologue}, Hindi (also Khadi Boli or Khari Boli) is an Indo-European language from India that is spoken by 181,676,620 people world-wide. It is the official language of India and derives much of its formal vocabulary from Sanskrit. \\
+\\
+Hindi is a fully developed language written in the Devanagari script. The script is written from left to right and is characterized by the long horizontal lines connecting the letters of each word. Devanagri uses spaces, making tokenization simpler.
 \begin{figure}[h]
   \caption{An example of Devanagri script in a dictionary.}
   \centering
-  \includegraphics[scale=0.10]{devanagri.jpg}
-
+  \includegraphics[scale=0.15]{devanagri.jpg}
+  \label{script}
 \end{figure}
+The image in Figure~\ref{script} is an example of Devanagri in a dictionary. \\
+\\
+Hindi has an SOV grammar and a rich morphology. There are two genders, two numbers, and three cases (direct, oblique, and vocative) for nouns as well as two types of nouns (type-I and type-II) within these categories. Adjectives must agree with nouns in gender, case and number athough some do not decline at all. Verbs have 3 aspects, tense/mood and must agree in gender and number \cite{snell}. There are many declensions and conjugations in Hindi, making the development of a morhpological analyzer useful.
 \section{Past Work on the Morphology of Hindi}
 
 \section{Available Resources}
