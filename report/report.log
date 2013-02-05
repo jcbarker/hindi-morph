@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.5)  25 JAN 2013 18:05
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.9.5)  5 FEB 2013 01:21
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -366,7 +366,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 74--77
 
  []
 
-(./report.bbl) [2] (./report.aux) ) 
+(./report.bbl [2]) [3] (./report.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
  4011 strings out of 493848
  55776 string characters out of 1152824
@@ -374,15 +378,15 @@ Here is how much of TeX's memory you used:
  7213 multiletter control sequences out of 15000+50000
  11410 words of font info for 45 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 36i,11n,43p,774b,292s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public
-/amsfonts/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
-m/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/
-texmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on report.pdf (2 pages, 568304 bytes).
+ 36i,11n,43p,926b,302s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-tex
+live/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/t
+ype1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/
+amsfonts/cm/cmti10.pfb>
+Output written on report.pdf (3 pages, 570057 bytes).
 PDF statistics:
- 30 PDF objects out of 1000 (max. 8388607)
+ 33 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
