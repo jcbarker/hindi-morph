@@ -1,6 +1,16 @@
 \documentclass[11pt,letterpaper]{article}
+
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+\setotherlanguage{hindi}
+
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\newfontfamily\devanagarifont[Scale=MatchUppercase]{Lohit Hindi}
+\newfontfamily\devtransl[Mapping=DevRom]{Times New Roman}
+
 \usepackage{fullpage}
-\usepackage[pdftex]{graphicx}
+\usepackage{graphicx}
 \usepackage{amsfonts,eucal,amsbsy,amsopn,amsmath}
 \usepackage{url}
 \usepackage[sort&compress]{natbib}
@@ -75,10 +85,61 @@ A seminal work on the grammar and morphology of Hindi is J.T. Platt's ``A gramma
 \\
 On the system development side of things a few papers have been published concerning building morphological analyzers for Hindi. These papers provide insight on the results and difficulties of building a morphological analyzer for Hindi. They discuss issues surrounding tranlsiteration, visualization, ease of installation and use, morphological modeling (derivational vs. inflectional), and ambiguity (Kanuparthi et. al., 2012; Goyal et. al., 2008; Bögel et al. 2007). Focused on downstream applications like MT, these papers offer a pragmatic view of how to go about modeling Hindi morphology. \\
 \section{Available Resources}
-Omar N. Koul's ``Modern Hindi Grammar'' is a good Hindi reference grammar that may be useful for understanding the morphological that will be supported by this analyzer.
+Omar N. Koul's ``Modern Hindi Grammar'' is a good Hindi reference grammar that may be useful for understanding the morphological phenomenathat will be supported by this analyzer.
 The corpus I have chosen to use is UMC002 English-Hindi. This is a freely available English-Hindi parallel corpus from which I will use the Hindi only. The corpus was created by collecting Hindi from freely available sources such as the ACL 2005 shared task and various web pages. It is a free open source alternative to the EMILLE corpus which is a good resource but not reproducible. The test is in the Devanagari script which is represented in Unicode. Should I decide to transliterate them there are various free lossless transliteration scheme and tools such as ITRANS that are available, though the original script should be fine. I have taken the corpus and created two development corpora of 1000 words each and one test corpus of 10,000 words by filtering out the 12,000 most frequent words and randomly dividing them between A, B, and C. They can be found in the ``corpora'' directory in the repository.
 \section{Survey of Phenomena in Hindi}
-
+\subsection{Inflectional:}
+\subsubsection{Nouns:}
+Hindi nouns are inflected with gender, number, and case. There are three declensions for nouns: masculine nouns ending in आ \emph{/a:/}, all other masculine nouns, and feminine nouns. Inflected nouns are extremely common and as such will be important to cover.
+\subsubsection{Pronouns:}
+There are personal, demonstrative, relative, possesive, reflexive, interrogative, and indefinite pronouns in Hindi. 
+Personal pronouns have two numbers (singular and plural), and three persons, and are inflected for direct, dative, ergative, locative, ablative, and possesive/genitive cases. The second person pronouns can be divided into polite, familiar and intimaite (one of each). The third person pronouns can be divided into proximal and remote (one of each). When personal pronouns are inflected they attach the appropriate postposition as a suffix as well as stem changing (with the exception of the first and second person possessive/genitive forms). It will be important to segment these during morphological analysis.
+Other pronouns have only direct and oblique forms, also inflecting for case by stem changing and appending the appropriate postpositions.
+\subsubsection{Adjectives:}
+There are inflected and uninflected adjectives in Hindi. Inflected adjectives are inflected for gender and number. First and second person possessive pronouns may be used as adjectives that inflect for gender. Numerals may attach two different suffixes to become multiplicatives (e.g. double, threefold, etc.) or aggregates (e.g. both, all three/four/five/etc. of them).
+\subsubsection{Verbs:}
+Hindi has main and auxiliary verbs.\\
+\\
+The verb होना \textit{hona} is the copula and has present, past, presumptive, and subjunctive forms.\\
+\begin{tabular}{l c l}
+\textbf{होना \textit{hona}} & \textbf{:} &\\
+Present tense& : &agrees with subject in number and person.\\
+Past tense& : &agrees with subject in gender and number.\\
+Presumptive form& : &agrees with person, gender and number.\\
+Subjunctive form& : &agrees in person and number.\\
+\end{tabular}
+There are three types of main verbs: simple verbs, conjunct verbs,
+and compound verbs. A simple verb may consist of one main verb
+and person, gender, number, tense, and aspect markers. In the
+compound verb construction, the person, gender, number, and aspect
+markers are taken by the explicators/operators, and in the conjunct
+verbal construction they are taken by the verb element. We will
+classify the verbal constructions as intransitive, transitive,
+ditransitive, causative, dative, conjunct, and compound. (Modern Hindi grammar)\\
+There are six tenses and three aspects. The product of three aspects with four tenses (present, past, presumptive, subjunctive) makes twelve aspectual-tenses. Non-aspectual verb forms include the future, root subjunctive, imperative and infinitive forms. In addition to these tenses and aspects Hindi has three moods: indicative, imperative, and optative. If that's not enough Hindi also has passive, indirect, and ``from/though'' voices, and that just finishes up all the finite verb forms!\\
+For non-finite verb forms Hindi has infinitives and perfective, imperfective, and conjunctive participles.\\
+All verbal forms will be very important for the analyzer to cover as they are so frequent.
+\subsection{Derivational:}
+\subsubsection{Nouns:}
+Hindi has a set of of derivational prefixes and suffixes from Persian and Sanskrit that allow for \{noun, adjective, verb\} $\rightarrow$ noun derivations. These may be useful but are lower on the priority list than inflectional morphology.
+\subsubsection{Adjectives:}
+There are a set of suffixes that allow adjectives to be derived from nouns in Hindi. There are two negative prefixes that also adjective to be derived from adjectives as well. Again, inflectional morphology takes precedence here.
+\subsubsection{Adverbs:}
+By form, adverbs can be classified into the following subgroups: (a)
+basic or non-derived adverbs, (b) derived adverbs, (c) phrasal
+adverbs, (d) reduplicated adverbs, and (e) particles.\\
+\\
+(a) The basic or non-derived adverbs may be either pure adverbs like
+आज \textit{a:j} ‘today,’ सदा \textit{sada:}/ हमेशा hameša: ‘always,’ or may be formed
+by adding the postposition से \textit{se} to nouns, adjectives, or adverbs.\\
+(b) Derived adverbs are formed by adding adverbial suffixes to the
+base form of demonstrative, relative, correlative, and interrogative
+pronouns. Locative, directional and manner adverbs are formed by adding different suffixes.\\
+(c) Phrasal adverbs are formed by adding a simple or a compound
+postposition to a noun.\\
+(d) Adverbs can be reduplicated to show intensity and distribution.\\
+(e) Particles are postpositions that be used to quantify and qualify things like time, weight, frequency, emphasis, etc.
+Adverbs would be good to analyze but fall behind nouns, adjectives and verbs in priority.
 \section{Initial Design}
 
 \section{System Analysis on Corpus A}
