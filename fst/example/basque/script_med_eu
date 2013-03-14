@@ -1,0 +1,12 @@
+
+source rules_eu
+
+
+regex MORPHO.l ;
+
+read cmatrix typo.matrix
+
+med ettxea
+
+med lehioa
+

@@ -1,0 +1,40 @@
+Multichar_Symbols +N +V +PastPart +Past +PresPart +3P +Sg +Pl
+
+LEXICON Root
+
+Noun ;
+Verb ;
+
+LEXICON Noun
+
+cat   Ninf;
+city  Ninf;
+watch Ninf;
+try   Ninf;
+panic Ninf;
+fox   Ninf;
+
+LEXICON Verb
+
+fox   Vinf;
+beg   Vinf;
+make  Vinf;
+watch Vinf;
+try   Vinf;
+panic Vinf;
+
+LEXICON Ninf
+
++N+Sg:0   #;
++N+Pl:^s  #;
+
+LEXICON Vinf
+
++V:0             #;
++V+3P+Sg:^s      #;
++V+Past:^ed      #;
++V+PastPart:^ed  #;
++V+PresPart:^ing #;
+
+
+

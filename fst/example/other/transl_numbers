@@ -1,0 +1,39 @@
+
+# INPUT: 2,001,634
+
+define Number ["0"|1|2|3|4|5|6|7|8|9];
+define Tag1 "," -> M || _ Number^3 .#. ;
+define Tag2 "," -> M M || _ Number^3 M ;
+define Tag3 Number -> ... C || _ Number^2 [M|.#.] ;
+define Tag4 Number -> ... X || _ Number [M|.#.] ;
+define Tag Tag1 .o. Tag2 .o. Tag3 .o. Tag4;
+#2MM0C0X1M6C3X4
+
+define NtoW1 1 X "0"->"ten",1 X 1->"eleven",1 X 2->"twelve",1 X 3->"thirteen",1 X 4->"fourteen",1 X 5->"fifteen",1 X 6->"sixteen",1 X 7 ->"seventeen",1 X 8->"eighteen",1 X 9->"nineteen"  || _ [M|.#.];
+
+define NtoW2 2->"twenty",3->"thirty",4->"forty",5->"fifty",6->"sixty",7->"seventy",8->"eighty",9->"ninety" || _ X ;
+define NtoW3 1->"one",2->"two",3->"three",4->"four",5->"five",6->"six",7->"seven",8->"eight",9->"nine" || _ [C|M|.#.];
+define NtoW NtoW1 .o. NtoW2 .o. NtoW3;
+
+define Tens ["twenty"|"thirty"|"forty"|"fifty"|"sixty"|"seventy"|"eighty"|"ninety"];
+define Digits ["one"|"two"|"three"|"four"|"five"|"six"|"seven"|"eight"|"nine"];
+define HyphenRule  [..] -> "-" || Tens _ Digits;
+define AndRule [..] -> "and " || " hundred " _ Tens;
+
+define End1 M M -> " million " ;
+define End2 M -> " thousand " ;
+define End3 C -> " hundred " ;
+define End4 X -> 0 ;
+define End5 "0" -> "zero" || .#. _ .#.;
+define End6 "0" ([" hundred " | " thousand " | " million " ]) @-> 0;  
+define End End1 .o. End2 .o. End3 .o. End4 .o. End5 .o. End6;
+
+regex Tag;
+echo 2,001,634
+down 2,001,634
+
+regex Tag .o. NtoW .o. End .o. HyphenRule .o. AndRule;
+
+down 2,001,634
+ 
+

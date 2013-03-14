@@ -1,0 +1,25 @@
+
+source rules_eu
+
+##########################################
+# Constraining morphotactics
+##########################################
+# In twolc rules, next rule is equivalent to /<=  rule type
+# no two cause
+# avoiding overgeneration from the lexicon
+# causal prefix and suffix, but not both
+
+# morphological inf. level
+define NOTWO  ~$[ "[Kaus]" ?+ "[Kaus]" ];
+define MORPHOFIL NOTWO .o. LEX .o. RULES ;
+
+# intermediate level
+define NOTWO2  ~$[ b a i t "+" ?+ "+" E l a k o];
+define MORPHOFIL2 LEX .o. NOTWO2 .o. RULES ;
+
+
+
+
+
+
+

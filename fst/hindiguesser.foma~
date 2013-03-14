@@ -1,0 +1,7 @@
+read lexc hindiguesser.lexc
+define GuessLexicon;
+
+define Cleanup "^" -> 0;
+
+regex GuessLexicon .o. 
+      Cleanup;

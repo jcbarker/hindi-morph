@@ -1,0 +1,225 @@
+! Next definitions get a subset of Basque language's lexicon. There are 
+! examples of the main categories and their declension.
+! With this definitions and corresponding rules, you have a
+! little example to practice with foma.
+! As you can suppose, there are many things out, but we want it to be
+! a simple example based on Basque language.
+
+
+Multichar_Symbols
+[IZE] [LIB] [IZB] [ADJ] [ADI] [ADL] [Abs] [Erg] [Gen] [Gel] [Konp] [Sup] [Gehi] [Sng] [Plu] [Mgb] [Buru] [Ezbu] [Gero] [Nom] [Knpl] [Kaus] [Erlt] [P1] [P2] [P3] [P4] [P5] [P6] [P7] [A1] 
+
+! morphophonemes and selection marks
+! N : final n in verb roots
+! R : hard r
+! A : final a in lemmas
+! @ : special a in auxiliary verbs
+! E : epenthetical e (suffix), vowel with epenthetical e (lemma) 
+! Q : epenthetical R
+! 1 : mark for place name
+
+
+LEXICON Root
+IZENAK;			!nouns
+TOKI_IZENAK;		!place names
+PERTS_IZENAK;		!person names
+ADJEKTIBOAK;		!adjectives
+ADITZAK;		!verbs
+ADITZ_LAG;		!auxiliary verbs
+ADITZ_AUR;		!noun prefix
+ADLAG_AUR;		!verb prefix
+
+LEXICON IZEN_JK		
+DEKLINAB;		!declension
+
+LEXICON IZEN_JK2
+#;
+DEKLINAB;
+
+LEXICON IZB_JK
+DEKLINAB2;		!declension for person name 
+
+LEXICON LIB_JK
+DEKLINAB3;		!declension for place name
+
+LEXICON ADJ_JK
+GRADUA;			!graduation
+DEKLINAB;		!declension
+
+LEXICON GERO_JK
+GERO;
+
+!!!! Nouns
+LEXICON IZENAK
+ate[IZE]:ate		IZEN_JK;
+etxe[IZE]:etxe 		IZEN_JK;
+ur[IZE]:ur		IZEN_JK;
+ur[IZE]:uR		IZEN_JK;
+zakur[IZE]:zakuR	IZEN_JK;
+ama[IZE]:amA		IZEN_JK;
+askatasuna[IZE]:askatasunA     IZEN_JK;
+leiho[IZE]:leiho 	IZEN_JK;
+zuhaitz[IZE]:zuhaitz    IZEN_JK;
+
+!!!! Place names
+LEXICON TOKI_IZENAK
+orio[LIB]:orio1		LIB_JK;
+tolosa[LIB]:tolosA1	LIB_JK;
+usurbil[LIB]:usurbil1	LIB_JK;
+irun[LIB]:irun1		LIB_JK;
+gasteiz[LIB]:gasteiz1	LIB_JK;
+
+!!!! Person names
+LEXICON PERTS_IZENAK
+maddi[IZB]:maddi	IZB_JK;
+kepa[IZB]:kepA		IZB_JK;
+itziar[IZB]:itziaR	IZB_JK;
+
+!!!! Ddjetives 
+LEXICON ADJEKTIBOAK
+gorri[ADJ]:gorri 	ADJ_JK;
+mozkor[ADJ]:mozkoR	ADJ_JK;
+
+!!!! Common declension
+LEXICON DEKLINAB
++[Abs][Mgb]:0	#;
++[Abs][Sng]:+a	#;
++[Abs][Plu]:+ak	#;
++[Erg][Mgb]:+Ek	#;
++[Erg][Sng]:+ak	#;
++[Erg][Plu]:+ek	#;
++[Ine][Mgb]:+Etan	#;
++[Ine][Sng]:+Ean	#;
++[Ine][Plu]:+etan	#;
++[Abl][Mgb]:+Etatik	#;
++[Abl][Sng]:+Etik	#;
++[Abl][Plu]:+etatik	#;
++[Abl][Sng]:+Etikan       #;
+
++[Gen][Mgb]:+Qen	IZEN_JK2;
++[Gen][Sng]:+aren	IZEN_JK2;
++[Gen][Plu]:+en		IZEN_JK2;
++[Gel][Mgb]:+Etako	IZEN_JK2;
++[Gel][Sng]:+Eko	IZEN_JK2;
++[Gel][Plu]:+etako	IZEN_JK2;
+
+!!!! Person name's declension
+LEXICON DEKLINAB2
++[Abs][Sng]:0	#;
++[Erg][Sng]:+Ek	#;
++[Gen][Sng]:+Qen	DEKLINAB;
+
+!!!! Place name's declension
+LEXICON DEKLINAB3 
++[Abs][Sng]:0	#;
++[Erg][Sng]:+Ek	#;
++[Ine][Sng]:+En	#;
++[Gen][Sng]:+Qen	DEKLINAB;
++[Gel][Sng]:+Eko	DEKLINAB;
+
+!!!! Grade
+LEXICON GRADUA
++[Konp]:+ago	DEKLINAB;
++[Sup]:+en	DEKLINAB;
++[Gehi]:+egi	DEKLINAB;
+
+!!!! Verb's prefixes
+LEXICON ADITZ_AUR
+ber[AUR]+:beR+	ADITZAK;
+
+!!!! Auxiliary verb's prefixes
+LEXICON ADLAG_AUR
+[Kaus]+:bait+	ADITZ_LAG;
+[Bald]+:ba+	ADITZ_LAG;
+
+!!!! Verb roots
+LEXICON ADITZAK
+egin[ADI]:egiN		ADITZA_ATZIZKIAK1;
+hasi[ADI]:has		ADITZA_ATZIZKIAK2;
+ikuzi[ADI]:ikuz		ADITZA_ATZIZKIAK2;
+erakutsi[ADI]:erakuts	ADITZA_ATZIZKIAK2;
+utzi[ADI]:utz		ADITZA_ATZIZKIAK2;
+ekarri[ADI]:ekaR	ADITZA_ATZIZKIAK3;
+ibili[ADI]:ibil		ADITZA_ATZIZKIAK3;
+ipini[ADI]:ipin		ADITZA_ATZIZKIAK3;
+erabaki[ADI]:erabaki	ADITZA_ATZIZKIAK4;
+jalgi[ADI]:jalgi	ADITZA_ATZIZKIAK4;
+nekatu[ADI]:neka	ADITZA_ATZIZKIAK5;
+findu[ADI]:fin		ADITZA_ATZIZKIAK5;
+saldu[ADI]:sal		ADITZA_ATZIZKIAK5;
+aberastu[ADI]:aberats	ADITZA_ATZIZKIAK6;
+hoztu[ADI]:hotz		ADITZA_ATZIZKIAK6;
+batu[ADI]:bat		ADITZA_ATZIZKIAK5;
+lotu[ADI]:lot		ADITZA_ATZIZKIAK5;
+bota[ADI]:bota		ADITZA_ATZIZKIAK4;
+bete[ADI]:bete		ADITZA_ATZIZKIAK4;
+eraso[ADI]:eraso	ADITZA_ATZIZKIAK4;
+hil[ADI]:hil		ADITZA_ATZIZKIAK4;
+
+!!!! flexion for verbs
+LEXICON ADITZA_ATZIZKIAK1
++[Buru]:0	GERO_JK;
++[Ezbu]:+ten	#;
++[Nom][IZE]:+te	DEKLINAB;
+#;
+
+!!!! flexion for verbs
+LEXICON ADITZA_ATZIZKIAK2
++[Buru]:+i	GERO_JK;
++[Ezbu]:+ten	#;
++[Nom][IZE]:+te	DEKLINAB;
+#;
+
+!!!! flexion for verbs
+LEXICON ADITZA_ATZIZKIAK3
++[Buru]:+i	GERO_JK;
++[Ezbu]:+tzen	#;
++[Nom][IZE]:+tze	DEKLINAB;
+#;
+
+!!!! flexion for verbs
+LEXICON ADITZA_ATZIZKIAK4
++[Buru]:0	GERO_JK;
++[Ezbu]:+tzen	#;
++[Nom][IZE]:+tze	DEKLINAB;
+#;
+
+!!!! flexion for verbs
+LEXICON ADITZA_ATZIZKIAK5
++[Buru]:+tu	GERO_JK;
++[Ezbu]:+tzen	#;
++[Nom][IZE]:+tze	DEKLINAB;
+#;
+
+!!!! flexion for verbs
+LEXICON ADITZA_ATZIZKIAK6
++[Buru]:+tu	GERO_JK;
++[Ezbu]:+ten	#;
++[Nom][IZE]:+te	DEKLINAB;
+#;
+
+!!!! Future's suffix 
+LEXICON GERO_JK
++[Gero]:+ko	#;
+#;
+
+!!!! Auxiliary verbs
+LEXICON ADITZ_LAG
+izan[ADL][A1][P3]:d@	LAG_ATZ;
+izan[ADL][A1][P1]:naiz	LAG_ATZ;
+izan[ADL][A1][P4]:gar@	LAG_ATZ;
+izan[ADL][A1][P5]:zar@	LAG_ATZ;
+edun[ADL][A1][P3]:duE	LAG_ATZ;
+edun[ADL][A1][P4]:dugu	LAG_ATZ;
+edun[ADL][A1][P1]:dut	LAG_ATZ;
+edun[ADL][A1][P7]:dute	LAG_ATZ;
+edun[ADL][A1][P3][P3][P3]:dio	LAG_ATZ;
+edun[ADL][A1][P3][P3][P1]:diot	LAG_ATZ;
+
+!!!! flexion for auxiliary verbs
+LEXICON LAG_ATZ
++[Knpl]:+Ela	#;
++[Kaus]:+Elako	#;
++[Erlt]:+En	#;
++[Erlt][Nom][IZE]:+En	DEKLINAB;
+#;

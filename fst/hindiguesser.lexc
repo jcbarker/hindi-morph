@@ -1,0 +1,64 @@
+Multichar_Symbols +Adj +Sg +Pl +Masc +Fem +Direct +Oblique +Dim +Anim +Inani +Inf +V
+
+LEXICON Surface
+
+<[व | े | ै | ए | ऐ | र | ृ | त | थ | य | ञ | ु | ू | उ | ऊ | ि | ी | इ | ई | ो | ौ | ओ | औ | प | फ | ा | आ | अ | आ | स | ष | द | ध | ट | ठ | ग | घ | ह | ः | ज | झ | क | ख | ल | ॢ | श | ॅ | ् | ॉ | च | छ | ड | ढ | ब | भ | न | ण | म | ॰ | ़ | ं | ँ ]+> Suffix;
+
+LEXICON Suffix
+
+Adjective;
+Noun;
+Verb;
+
+LEXICON Adjective
+
++Adj:0           #;
++Adj+Fem:^ी     #;
++Adj+Masc+Sg:^ा #;
++Adj+Masc+Pl:^े #;
+
+LEXICON Noun
+
+ा+N+Masc+Sg+Anim:ा NCaseMascSg;
+ा+N+Fem+Sg+Anim:ी NCaseFemSg;
+
+
+ी+N+Masc+Sg+Anim:ी NCaseMascSg;
+ी+N+Fem+Sg+Anim:न NCaseFemSg;
+
+ा+N+Masc+Sg+Inanim:ा NCaseMascSg;
+ा+N+Fem+Sg+Inanim+Dim:िया NCaseFemSg;
+ा+N+Fem+Sg+Inanim+Dim:ी NCaseFemSg;
+
++N+Masc+Sg:0 NCaseMascSg;
+
++N+Masc+Sg+Anim:0 NCaseMascSg;
++N+Fem+Sg+Anim:नी NCaseFemSg;
++N+Fem+Sg+Anim:ी NCaseFemSg;
+
+ा+N+Masc+Pl:े NCasePl;
++N+Masc+Pl:0 NCasePl;
+ी+N+Fem+Pl:ियाँ NCasePl;
++N+Fem+Pl:ें NCasePl;
+
+LEXICON NCaseMascSg:
+
++Direct:0 #;
++Oblique:^े #;
++Vocative:^े #;
+
+LEXICON NCasePl:
+
++Direct:0 #;
++Oblique:^ों #;
++Vocative:^ो #;
+
+LEXICON NCaseFemSg:
+
++Direct:0 #;
++Oblique:^ी #;
++Vocative:^ी #;
+
+LEXICON Verb:
+
++V+Inf:^ना #;

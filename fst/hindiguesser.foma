@@ -1,0 +1,11 @@
+read lexc hindiguesser.lexc
+define GuessLexicon;
+
+define CaseMarking ा -> 0 || _ "^" [ े | ो ं | ो ] ,,
+       		   ी -> 0 || _ "^" [ ी | ो ं | ो ] ;
+       		   
+define Cleanup "^" -> 0;
+
+regex GuessLexicon .o.
+      Cleanup;
+      

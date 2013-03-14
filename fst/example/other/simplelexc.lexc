@@ -1,0 +1,10 @@
+LEXICON Root
+
+cat Suff;
+dog Suff;
+mouse Suff;
+horse Suff;
+
+LEXICON Suff
+s #;
+  #;

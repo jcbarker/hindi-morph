@@ -1,0 +1,37 @@
+Multichar_Symbols +Adj +Sg +Pl +Masc +Fem +Direct +Oblique
+
+LEXICON Surface
+
+<[व | े | ै | ए | ऐ | र | ृ | त | थ | य | ञ | ु | ू | उ | ऊ | ि | ी | इ | ई | ो | ौ | ओ | औ | प | फ | ा | आ | अ | आ | स | ष | द | ध | ट | ठ | ग | घ | ह | ः | ज | झ | क | ख | ल | ॢ | श | ॅ | ् | ॉ | च | छ | ड | ढ | ब | भ | न | ण | म | ॰ | ़ | ं | ँ ]+> Suffix;
+
+LEXICON Suffix
+
+Adjective;
+Noun;
+
+LEXICON Adjective
+
++Adj:0           #;
++Adj+Fem:^ी     #;
++Adj+Masc+Sg:^ा #;
++Adj+Masc+Pl:^े #;
+
+LEXICON Noun
+
++N+Masc+Sg:^आ NCaseMascSg;
++N+Masc+Sg:0 NCase;
++N+Masc+Sg:^ी NCase;
+
++N+Masc+
++N+Masc+Pl:े NCase;
+
++N+Fem+Sg:^ी NCase;
++N+Fem+Sg:^न NCase;
++N+Fem+Sg:^िया NCase;
++N+Fem+Sg:नी NCase;
+
+
+LEXICON NCaseMascSg
+
++Direct:0 #;
++Oblique: 

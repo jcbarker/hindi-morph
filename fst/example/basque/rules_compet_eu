@@ -1,0 +1,34 @@
+source rules_eu
+
+read lexc lex_eu_plus
+define LEXPLUS;
+
+##########################################
+# Definitions
+##########################################
+
+#Sibilants
+define Sibilant z | s | x ;
+
+##########################################
+# Rules
+##########################################
+
+define H1 h (->) 0 ;
+       # hoztu:oztu
+
+define H2 [..] (->) h ||  [Vowel0 | .#.] _ Vowel0 ;
+       # leihoa:lehioa
+
+define Sib Sibilant (->) Sibilant ;
+	# etxe:etze
+
+##########################################
+# Composition
+##########################################
+
+define CompRules H1 .o. H2 .o. Sib ;
+define ENHANCED LEXPLUS .o. RULES .o. CompRules ;
+
+define CompCorr MORPHO.i .o. ENHANCED ;
+

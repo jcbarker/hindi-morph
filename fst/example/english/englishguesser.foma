@@ -1,0 +1,28 @@
+define C [b|c|d|f|g|h|j|k|l|m|n|p|q|r|s|t|v|w|x|z];
+define V [a|e|i|o|u];
+
+define Stem [C^<3 V C^<3]+;
+
+define GuessLexicon Stem [
+                    ["+N" "+Pl"]:["^" s]           |
+                    ["+N" "+Sg"]:0                 |
+                    ["+V"]:0                       |
+                    ["+V" "+3P" "+Sg"]:["^" s]     |
+                    ["+V" "+PastPart"]:["^" e d ]  |
+                    ["+V" "+PresPart"]:["^" i n g ]]  ;
+
+define ConsonantDoubling g -> g g || _ "^" [i n g | e d ];
+define EDeletion e -> 0 || _ "^" [ i n g | e d ] ;
+define EInsertion [..] -> e || s | z | x | c h | s h _ "^" s ;
+define YReplacement y -> i e || _ "^" s    ,, 
+                    y -> i   || _ "^" e d  ;
+define KInsertion [..] -> k || V c _ "^" [e d | i n g];
+define Cleanup "^" -> 0;
+
+regex GuessLexicon .o. 
+      ConsonantDoubling .o. 
+      EDeletion .o. 
+      EInsertion .o. 
+      YReplacement .o. 
+      KInsertion .o. 
+      Cleanup;
