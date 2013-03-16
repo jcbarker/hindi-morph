@@ -1,0 +1,10 @@
+Multichar_Symbols +Adj +Sg +Pl +Masc +Fem ^GuessAdjective
+
+LEXICON Root
+^GuessAdjective Adjective;
+
+LEXICON Adjective
++Adj:0           #;
++Adj+Fem:^ी     #;
++Adj+Masc+Sg:^ा #;
++Adj+Masc+Pl:^े #;

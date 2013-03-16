@@ -1,4 +1,17 @@
-read lexc hindiguesser.lexc
+! Alphabet
+define Vowel ए | ऐ | उ | ऊ | इ | ई | ओ | औ | आ | अ | ऋ | ॠ | ऌ | ॡ;
+define Matra े | ै | ु | ू | ि | ी | ो | ौ | ा | ॉ | ृ | ॄ | ॢ | ॣ;
+define Nasalize ं | ँ;
+define Consonant व | र | त | थ | य | ञ | प | फ | स | ष | द | ध | ट | ठ | ग | घ | ह | ज | झ | क | ख | ल | श | च | छ | ड | ढ | ब | भ | न | ण | म;
+define Visarga ः;
+define Halant ् | ;
+define Nuqta ़;
+define Ree ;
+define Abbrev ॰;
+
+
+! Load Lexicons
+read lexc adjectives.lexc
 define GuessLexicon;
 
 define CaseMarking ा -> 0 || _ "^" [ े | ो ं | ो ] ,,
@@ -7,5 +20,6 @@ define CaseMarking ा -> 0 || _ "^" [ े | ो ं | ो ] ,,
 define Cleanup "^" -> 0;
 
 regex GuessLexicon .o.
+      CaseMarking .o.
       Cleanup;
       

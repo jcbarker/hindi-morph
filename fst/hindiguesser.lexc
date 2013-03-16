@@ -6,16 +6,8 @@ LEXICON Surface
 
 LEXICON Suffix
 
-Adjective;
 Noun;
 Verb;
-
-LEXICON Adjective
-
-+Adj:0           #;
-+Adj+Fem:^ी     #;
-+Adj+Masc+Sg:^ा #;
-+Adj+Masc+Pl:^े #;
 
 LEXICON Noun
 
