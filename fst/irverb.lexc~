@@ -1,0 +1,56 @@
+Multichar_Symbols
++V
+! Person
++1p
++2p
++3p
+
+! Gender
++Masc
++Fem
+
+!Number
++Sg
++Pl
+
++CausI		! Causative (study+CausI -> teach x)
++CausII		! Extended causative (studt+CausII -> make x learn 
+
+! Tense
++Pres
++Fut
++Past
+
+! Aspect
++Hab		! Habitual
++Prog		! Progressive
++Perf		! Perfective
+
+! Mood
++Imp		! Imperative
++Sub		! Subjunctive
+
+! Relation
++Int		! Intimate
++Fam		! Familiar
++Pol		! Polite
+
+LEXICON Irregular
+हो+V:0 Hona;
+
+LEXICON Hona
+! Present
++1p+Sg+Pres:हूँ #;
++2p+Sg+Int+Pres:है #;
++3p+Sg+Pres:है #;
++1p+Pl+Pres:हैं #;
++2p+Fam+Pres:हो #;
++3p+Pl+Pres:हैं #;
+
+! Past
++Masc+Sg+Past: #;
++Masc+Pl+Past: #;
++Fem+Sg+Past: #;
++Fem+Pl+Past: #;
+
+!

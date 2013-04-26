@@ -1,0 +1,132 @@
+Multichar_Symbols
++V
+! Person
++1p
++2p
++3p
+
+! Gender
++Masc
++Fem
+
+!Number
++Sg
++Pl
+
++CausI		! Causative (study+CausI -> teach x)
++CausII		! Extended causative (studt+CausII -> make x learn 
+
+! Tense
++Pres
++Fut
++Past
+
+! Aspect
++Hab		! Habitual
++Prog		! Progressive
++Perf		! Perfective
+
+! Mood
++Imp		! Imperative
++Sub		! Subjunctive
+
+! Relation
++Int		! Intimate
++Fam		! Familiar
++Pol		! Polite
+
+LEXICON Irregular
+हो+V:0 Hona;
+
+हो+V+Perf:हु Perfective;
+जा+V+Perf:ग Perfective;
+कर+V+Perf:कि Perfective;
+दे+V+Perf:दि Perfective;
+ले+V+Perf:लि Perfective;
+
+दे+V+Imp+Fam:दो #;
+ले+V+Imp+Fam:लो #;
+
+कर+V+Imp+Pol:कीजिए #;
+कर+V+Imp+Pol+Fut:कीजिएगा #;
+
+दे+V+Imp+Pol:दीजिए #;
+दे+V+Imp+Pol+Fut:दीजिएगा #;
+
+ले+V+Imp+Pol:लीजिए #;
+ले+V+Imp+Pol+Fut:लीजिएगा #;
+
+पी+V+Imp+Pol:पीजिए #;
+पी+V+Imp+Pol+Fut:पीजिएगा #;
+
+दे+V+Sub:द Subjunctive;
+ले+V+Sub:ल Subjunctive;
+
+LEXICON Perfective
++Masc+Sg:^आ #;
++Masc+Pl:^ए #;
++Fem+Sg:^ई #;
++Fem+Pl:^ईं #;
+
+LEXICON Subjunctive
++1p+Sg:^ऊँ #;
++1p+Pl:^एँ #;
++2p+Sg+Fam:^ए #;
++2p+Sg+Pol:^एँ #;
++2p+Pl+Fam:^ओ #;
++2p+Pl+Pol:^एँ #;
++3p+Sg:^ए #;
++3p+Pl:^एँ #;
+
+LEXICON Hona
+! Present
++Pres+1p+Sg:हूँ #;
++Pres+2p+Sg+Int:है #;
++Pres+3p+Sg:है #;
++Pres+1p+Pl:हैं #;
++Pres+2p+Fam:हो #;
++Pres+3p+Pl:हैं #;
+
+! Past
++Past+Masc+Sg:था #;
++Past+Masc+Pl:थे #;
++Past+Fem+Sg:थी #;
++Past+Fem+Pl:थीं #;
+
+! Future
++Fut+1p+Masc+Sg:हूँगा #;
++Fut+1p+Fem+Sg:हूँगी #;
++Fut+1p+Masc+Pl:होंगे #;
++Fut+1p+Fem+Pl:होंगीं #;
+
++Fut+2p+Masc+Sg:होगा #;
++Fut+2p+Fem+Sg:होगी #;
++Fut+2p+Masc+Pl:होगे #;
++Fut+2p+Fem+Pl:होगीं #;
+
++Fut+3p+Masc+Sg:होगा #;
++Fut+3p+Fem+Sg:होगी #;
++Fut+3p+Masc+Pl:होंगे #;
++Fut+3p+Fem+Pl:होंगीं #;
+
+! Imperative
++Imp+Fam:हौ #;
++Imp+Fam:हूजियो #;
++Imp+Int:हूजिए #;
++Imp+Int:हो #;
++Imp+Pol+Fut:हूजिएगा #;
+
+! Subjunctive
++Sub+1p+Sg:हूँ #;
++Sub+1p+Pl:हों #;
++Sub+1p+Pl:होवैं #;
++Sub+2p+Sg+Fam:हो #;
++Sub+2p+Sg+Fam:हौ #;
++Sub+2p+Sg+Pol:हों #;
++Sub+2p+Sg+Pol:होवैं #;
++Sub+2p+Pl+Fam:हो #;
++Sub+2p+Pl+Pol:हों #;
++Sub+2p+Pl+Pol:होवैं #;
++Sub+3p+Sg:हो #;
++Sub+3p+Pl:हों #;
++Sub+3p+Pl:होवैं #;

@@ -1,0 +1,14 @@
+Multichar_Symbols 
++Adj 
++Sg 
++Pl 
++Masc 
++Fem
++Obl
++Dir
+^GuessAdjectiveI
+^GuessAdjectiveII
+
+LEXICON Root
+^GuessAdjectiveI AdjectiveI;
+^GuessAdjectiveII AdjectiveII;

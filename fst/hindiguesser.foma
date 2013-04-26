@@ -21,14 +21,14 @@ substitute defined GuessVerb for "^GuessVerb"
 define Verb
 define VerbVowelWeakening ी -> ि, ई -> इ || _ "^" [आ | ए | {ऊँ} | ओ] ,,
        			  ू -> ु, ऊ -> उ || _ "^" [ए | {ऊँ} | ओ] ,,
-       			  ी -> 0 || _ "^" ी ;
+       			  ी -> 0, ई -> 0, ि -> 0, इ -> 0 || _ "^" [ी | ई] ;
 define VerbYEpenthesis [..] -> य || [Vowel-ई | Matra-ी] _ "^" आ ,,
-       		       [..] -> य || [ए | े] _ "^" [ए | े];
-       		       
+       		       [..] -> य || [ए | े] _ "^" [ए | े] ;
+
 ! Adjectives
 define GuessAdjectiveI Char+ [? - ा] ["+Guess":0];
 define GuessAdjectiveII Char+ ा ["+Guess":0];
-read lexc adjectives.lexc
+read lexc newadjectives.lexc
 substitute defined GuessAdjectiveI for "^GuessAdjectiveI"
 substitute defined GuessAdjectiveII for "^GuessAdjectiveII"
 define Adjective
@@ -40,7 +40,7 @@ define GuessNounI Char+ ा ["+Guess":0];
 define GuessNounII Char+ [? - ा] ["+Guess":0];
 define GuessNounIII Char+ [ी | ि | {िया}] ["+Guess":0];
 define GuessNounIV Char+ [? - [ी | ि | {िया}]] ["+Guess":0];
-read lexc nouns.lexc
+read lexc newnouns.lexc
 substitute defined GuessNounI for "^GuessNounI"
 substitute defined GuessNounII for "^GuessNounII"
 substitute defined GuessNounIII for "^GuessNounIII"
@@ -62,12 +62,30 @@ define VowelToMatra ए -> े || Consonant "^" _ ,,
 define VowelWeakening ू -> ु || _ "^" {ओं} ,,
 		      ी -> ि || _ "^" {ओं} ;
 define YEpenthesis {ओं} -> {यों} || ि "^" _ ;
+
+! Postpositions
+read lexc postpositions.lexc
+define Postposition
+
+define NasalUnify ँ (->) ं ,,
+       		  ं (->) ँ ;
 define Cleanup "^" -> 0;
+
+! Irregulars
+read lexc irverb.lexc
+define IrVerb
+
+! Adverbs
+read lexc adverbs.lexc
+define Adverb
 
 ! Compose everything
 regex (((Adjective .o. AdjADeletion) |
       (Noun .o. NounADeletion .o. NounIDeletion .o. VowelWeakening .o. YEpenthesis) |
       Pronoun |
-      (Verb .o. VerbVowelWeakening .o. VerbYEpenthesis))
+      (IrVerb .P. (Verb .o. VerbVowelWeakening .o. VerbYEpenthesis)) |
+      Postposition |
+      Adverb)
       .o. VowelToMatra
+      .o. NasalUnify
       .o. Cleanup);

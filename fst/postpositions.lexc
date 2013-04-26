@@ -1,0 +1,31 @@
+Multichar_Symbols
++PP
++Masc
++Fem
++Sg
++Pl
++Gen
++Erg
++Abl
++Dat
++Acc
+
+LEXICON Root
+का+PP+Gen+Masc+Sg:का #;
+के+PP+Gen+Masc+Pl:के #;
+की+PP+Gen+Fem+Sg:की #;
+की+PP+Gen+Fem+Pl:की #;
+
+को+PP+Dat:को #;
+को+PP+Acc:को #;
+
+ने+PP+Erg:ने #;
+
+से+PP+Abl:से #;
+
+में Postposition;
+पर Postposition;
+तक Postposition;
+
+LEXICON Postposition
++PP:0 #;
