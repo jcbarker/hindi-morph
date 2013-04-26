@@ -1,0 +1,78 @@
+Multichar_Symbols
++V
++1p
++2p
++3p
++Masc
++Fem
++Sg
++Pl
++CausI		! Causative (study+CausI -> teach x)
++CausII		! Extended causative (studt+CausII -> make x learn 
++Pres
++Fut
++Past
++Hab		! Habitual
++Prog		! Progressive
++Perf		! Perfective
++Imp		! Imperative
++Int		! Intimate
++Fam		! Familiar
++Pol		! Polite
++Sub		! Subjunctive
+^GuessVerb
+
+LEXICON Root
+^GuessVerb Verb;
+
+! Progressive
+रह+V+Masc+Sg+Prog:रहा #;
+रह+V+Masc+Pl+Prog:रहे #;
+रह+V+Fem+Sg+Prog:रही #;
+रह+V+Fem+Pl+Prog:रही #;
+		     
+LEXICON Verb
+! Stem
++V:0 #;
+
+! Habitual
++V+Hab:0 Habitual;
+
+! Perfective
++V+Perf:0 Perfective;
+
+! Infinitive
++V+Inf:^ना #;
+
+! Imperative
++V+Imp:0 Imperative;
+
+! Subjunctive
++V+Sub:0 Subjunctive;
+
+LEXICON Subjunctive
++1p+Sg:^ऊँ #;
++1p+Pl:^एँ #;
++2p+Sg+Fam:^ए #;
++2p+Sg+Pol:^एँ #;
++2p+Pl+Fam:^ओ #;
++2p+Pl+Pol:^एँ #;
++3p+Sg:^ए #;
++3p+Pl:^एँ #;
+
+LEXICON Imperative
++Int:0 #;
++Fam:^ओ #;
++Pol:^इए #;
+
+LEXICON Habitual
++Masc+Sg:^ता #;
++Masc+Pl:^ते #;
++Fem+Sg:^ती #;
++Fem+Pl:^ती #;
+
+LEXICON Perfective
++Masc+Sg:^आ #;
++Masc+Pl:^ए #;
++Fem+Sg:^ई #;
++Fem+Pl:^ईं #;

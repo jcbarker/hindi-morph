@@ -1,0 +1,55 @@
+Multichar_Symbols
++Pronoun
++1p
++2p
++3p
++Sg
++Pl
++Prox
++Rem
++Hon
++Fam
++Inf
++Dir
++Obl
++Dat
++Erg
++Loc
++Abl
++Gen
+
+LEXICON Pronouns
+मैं+Pronoun+1p+Sg+Dir:मैं #;
+मैं+Pronoun+1p+Sg+Obl:मैं #;
+मैं+Pronoun+1p+Sg+Erg:मैंने #;
+मैं+Pronoun+1p+Sg+Dat:मुझे #;
+मैं+Pronoun+1p+Sg:मुझ Dative;
+मैं+Pronoun+1p+Sg+Loc:मुझपर #;
+
+हम+Pronoun+1p+Pl+Dir:हम #;
+हम+Pronoun+1p+Pl+Obl:हम PostP;
+हम+Pronoun+1p+Pl+Obl:हमें #;
+
+तू+Pronoun+2p+Sg+Fam+Dir:तू #;
+तूम+Pronoun+2p+Pl+Fam+Dir:तूम #;
+आप+Pronoun+2p+Sg+Hon+Dir:आप #;
+आप+Pronoun+2p+Pl+Hon+Dir:आप #;
+यह+Pronoun+3p+Sg+Prox+Dir:यह #;
+ये+Pronoun+3p+Pl+Prox+Dir:ये #;
+वह+Pronoun+3p+Sg+Rem+Dir:वह #;
+वे+Pronoun+3p+Pl+Rem+Dir:वे #;
+
+LEXICON PostP:
+Dative;
+Locative;
+
+
+LEXICON Dative
++Dat:को #;
+
+LEXICON Locative
++Loc:पर #;
+
+LEXICON Ergative
++Erg:ने #;
+

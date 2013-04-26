@@ -1,0 +1,25 @@
+Multichar_Symbols
++Pronoun
++1p
++2p
++3p
++Sg
++Pl
++Prox
++Rem
++Hon
++Inf
++Dir
++Obl
+
+LEXICON Pronouns
+मैं+Pronoun+1p+Sg+Dir:मैं #;
+हम+Pronoun+1p+Pl+Dir:हम #;
+तू+Pronoun+2p+Sg+Dir:तू #;
+तूम+Pronoun+2p+Pl+Dir:तूम #;
+आप+Pronoun+2p+Sg+Hon+Dir:आप #;
+आप+Pronoun+2p+Pl+Hon+Dir:आप #;
+यह+Pronoun+3p+Sg+Prox+Dir:यह #;
+ये+Pronoun+3p+Pl+Prox+Dir:ये #;
+वह+Pronoun+3p+Sg+Rem+Dir:वह #;
+वे+Pronoun+3p+Pl+Rem+Dir:वे #;

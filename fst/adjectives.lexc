@@ -1,10 +1,27 @@
-Multichar_Symbols +Adj +Sg +Pl +Masc +Fem ^GuessAdjective
+Multichar_Symbols 
++Adj 
++Sg 
++Pl 
++Masc 
++Fem
++Obl
++Dir
+^GuessAdjectiveI
+^GuessAdjectiveII
 
 LEXICON Root
-^GuessAdjective Adjective;
+^GuessAdjectiveI AdjectiveI;
+^GuessAdjectiveII AdjectiveII;
 
-LEXICON Adjective
-+Adj:0           #;
-+Adj+Fem:^ी     #;
-+Adj+Masc+Sg:^ा #;
-+Adj+Masc+Pl:^े #;
+LEXICON AdjectiveI
++Adj:0                  #;
+
+LEXICON AdjectiveII
++Adj+Masc+Sg+Dir:0  #;
++Adj+Masc+Pl+Dir:^े  #;
++Adj+Masc+Sg+Obl:^े  #;
++Adj+Masc+Pl+Obl:^े  #;
++Adj+Fem+Sg+Dir:^ी   #;
++Adj+Fem+Pl+Dir:^ी   #;
++Adj+Fem+Sg+Obl:^ी   #;
++Adj+Fem+Pl+Obl:^ी   #;

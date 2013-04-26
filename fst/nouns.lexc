@@ -1,0 +1,55 @@
+Multichar_Symbols 
++N
++Sg 
++Pl
++Masc 
++Fem
++Obl
++Dir
+^GuessNounI
+^GuessNounII
+^GuessNounIII
+^GuessNounIV
+
+LEXICON Root
+^GuessNounI NounI; ! Ex: लड़का
+लड़का NounI;
+^GuessNounII NounII; ! Ex: घर
+आदमी NounII;
+मकान NounII;
+हिन्दू NounII;
+^GuessNounIII NounIII; ! Ex: लड़की प्रति चिड़िया
+लड़की NounIII;
+प्रति NounIII;
+चिड़िया NounIII;
+^GuessNounIV NounIV; ! Ex: मेज़
+मेज़ NounIV;
+
+! Masc ending in ा
+! Ex: लड़का
+LEXICON NounI
++N+Masc+Sg+Dir:0 #;
++N+Masc+Pl+Dir:^े #;
++N+Masc+Sg+Obl:^े #;
++N+Masc+Pl+Obl:^ों #;
+
+! Masc without ा
+LEXICON NounII
++N+Masc+Sg+Dir:0 #;
++N+Masc+Sg+Obl:0 #;
++N+Masc+Pl+Dir:0 #;
++N+Masc+Pl+Obl:^ओं #;
+
+! Fem like लड़की प्रति चिड़िया
+LEXICON NounIII
++N+Fem+Sg+Dir:0 #;
++N+Fem+Sg+Obl:0 #;
++N+Fem+Pl+Dir:^ियाँ #;
++N+Fem+Pl+Obl:^ियों #;
+
+! Fem like मेज़
+LEXICON NounIV
++N+Fem+Sg+Dir:0 #;
++N+Fem+Sg+Obl:0 #;
++N+Fem+Pl+Dir:^एँ #;
++N+Fem+Pl+Obl:^ओं #;

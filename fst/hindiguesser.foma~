@@ -1,7 +1,28 @@
-read lexc hindiguesser.lexc
-define GuessLexicon;
+! Alphabet
+define Vowel ए | ऐ | उ | ऊ | इ | ई | ओ | औ | आ | अ | ऋ | ॠ | ऌ | ॡ;
+define Matra े | ै | ु | ू | ि | ी | ो | ौ | ा | ॉ | ृ | ॄ | ॢ | ॣ;
+define Nasalize ं | ँ;
+define Consonant व | र | त | थ | य | ञ | प | फ | स | ष | द | ध | ट | ठ | ग | घ | ह | ज | झ | क | ख | ल | श | च | छ | ड | ढ | ब | भ | न | ण | म;
+define Visarga ः;
+define Halant ्;
+define Nuqta ़;
+define Abbrev ॰;
+define Word [Vowel | Consonant] [Vowel | Consonant | Halant | Nuqta | Nasalize | Matra | Visarga]* [Abbrev | 0];
 
+! Load Lexicons
+define CaseMarking ा -> 0 || _ "^" [ े | ो ं | ो ] ,,
+       		   ी -> 0 || _ "^" [ ी | ो ं | ो ] ;
+
+define GuessAdjectiveI Word Word-ा ["+Guess":0];
+define GuessAdjectiveII Word ा ["+Guess":0];
+read lexc adjectives.lexc
+substitute defined GuessAdjectiveI for "^GuessAdjectiveI"
+substitute defined GuessAdjectiveII for "^GuessAdjectiveII"
+define Adjective
+       		   
 define Cleanup "^" -> 0;
 
-regex GuessLexicon .o. 
-      Cleanup;
+! Compose everything
+regex ((Adjective) .o.
+      Cleanup);
+      

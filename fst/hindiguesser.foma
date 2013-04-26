@@ -2,24 +2,72 @@
 define Vowel ए | ऐ | उ | ऊ | इ | ई | ओ | औ | आ | अ | ऋ | ॠ | ऌ | ॡ;
 define Matra े | ै | ु | ू | ि | ी | ो | ौ | ा | ॉ | ृ | ॄ | ॢ | ॣ;
 define Nasalize ं | ँ;
-define Consonant व | र | त | थ | य | ञ | प | फ | स | ष | द | ध | ट | ठ | ग | घ | ह | ज | झ | क | ख | ल | श | च | छ | ड | ढ | ब | भ | न | ण | म;
+define Consonant व | र | त | थ | य | ञ | प | फ | स | ष | द | ध | ट | ठ | ग | घ | ह | ज | झ | क | ख | ल | श | च | छ | ड | ढ | ब | भ | न | ण | म | ़;
 define Visarga ः;
-define Halant ् | ;
+define Halant ्;
 define Nuqta ़;
-define Ree ;
 define Abbrev ॰;
+define Word [Vowel | Consonant] [Vowel | Consonant | Halant | Nuqta | Nasalize | Matra | Visarga]* [Abbrev | 0];
+define Char [Vowel | Consonant | Halant | Nuqta | Nasalize | Matra | Visarga];
 
+! Pronouns
+read lexc pronouns.lexc
+define Pronoun
 
-! Load Lexicons
+! Verbs
+define GuessVerb Char* [Char-ै-ु-ि-ौ] [0 | ँ | ं] ["+Guess":0];
+read lexc verbs.lexc
+substitute defined GuessVerb for "^GuessVerb"
+define Verb
+define VerbVowelWeakening ी -> ि, ई -> इ || _ "^" [आ | ए | {ऊँ} | ओ] ,,
+       			  ू -> ु, ऊ -> उ || _ "^" [ए | {ऊँ} | ओ] ,,
+       			  ी -> 0 || _ "^" ी ;
+define VerbYEpenthesis [..] -> य || [Vowel-ई | Matra-ी] _ "^" आ ,,
+       		       [..] -> य || [ए | े] _ "^" [ए | े];
+       		       
+! Adjectives
+define GuessAdjectiveI Char+ [? - ा] ["+Guess":0];
+define GuessAdjectiveII Char+ ा ["+Guess":0];
 read lexc adjectives.lexc
-define GuessLexicon;
+substitute defined GuessAdjectiveI for "^GuessAdjectiveI"
+substitute defined GuessAdjectiveII for "^GuessAdjectiveII"
+define Adjective
 
-define CaseMarking ा -> 0 || _ "^" [ े | ो ं | ो ] ,,
-       		   ी -> 0 || _ "^" [ ी | ो ं | ो ] ;
-       		   
+define AdjADeletion ा -> 0 || _ "^" [ी | े];
+
+! Nouns
+define GuessNounI Char+ ा ["+Guess":0];
+define GuessNounII Char+ [? - ा] ["+Guess":0];
+define GuessNounIII Char+ [ी | ि | {िया}] ["+Guess":0];
+define GuessNounIV Char+ [? - [ी | ि | {िया}]] ["+Guess":0];
+read lexc nouns.lexc
+substitute defined GuessNounI for "^GuessNounI"
+substitute defined GuessNounII for "^GuessNounII"
+substitute defined GuessNounIII for "^GuessNounIII"
+substitute defined GuessNounIV for "^GuessNounIV"
+define Noun
+define NounADeletion ा -> 0 || _ "^" [ो ं | े];
+define NounIDeletion ी -> 0, ि -> 0, {िया} -> 0 || _ "^" [{ियाँ} | {ियों}];
+
+define VowelToMatra ए -> े || Consonant "^" _ ,,
+       		    ऐ -> ै || Consonant "^" _ ,,
+		    उ -> ु || Consonant "^" _ ,,
+		    ऊ -> ू || Consonant "^" _ ,,
+ 		    इ -> ि || Consonant "^" _ ,,
+		    ई -> ी || Consonant "^" _ ,,
+		    ओ -> ो || Consonant "^" _ ,,
+		    औ -> ौ || Consonant "^" _ ,,
+		    आ -> ा || Consonant "^" _ ,,
+		    अ -> 0 || Consonant "^" _ ;
+define VowelWeakening ू -> ु || _ "^" {ओं} ,,
+		      ी -> ि || _ "^" {ओं} ;
+define YEpenthesis {ओं} -> {यों} || ि "^" _ ;
 define Cleanup "^" -> 0;
 
-regex GuessLexicon .o.
-      CaseMarking .o.
-      Cleanup;
-      
+! Compose everything
+regex (((Adjective .o. AdjADeletion) |
+      (Noun .o. NounADeletion .o. NounIDeletion .o. VowelWeakening .o. YEpenthesis) |
+      Pronoun |
+      (Verb .o. VerbVowelWeakening .o. VerbYEpenthesis))
+      .o. VowelToMatra
+      .o. Cleanup);
