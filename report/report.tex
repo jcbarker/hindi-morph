@@ -1,13 +1,7 @@
 \documentclass[11pt,letterpaper]{article}
 
-\usepackage{polyglossia}
-\setdefaultlanguage{english}
-\setotherlanguage{hindi}
-
 \usepackage{fontspec}
-\setmainfont{Times New Roman}
-\newfontfamily\devanagarifont[Scale=MatchUppercase]{Lohit Hindi}
-\newfontfamily\devtransl[Mapping=DevRom]{Times New Roman}
+\setmainfont{FreeSerif}
 
 \usepackage{fullpage}
 \usepackage{graphicx}
@@ -79,7 +73,7 @@ Hindi is a fully developed language written in the Devanagari script. The script
 \end{figure}
 The image in Figure~\ref{script} is an example of Devanagri in a dictionary. \\
 \\
-Hindi has an SOV grammar and a rich morphology. There are two genders, two numbers, and three cases (direct, oblique, and vocative) for nouns as well as two types of nouns (type-I and type-II) within these categories. Adjectives must agree with nouns in gender, case and number athough some do not decline at all. Verbs have 3 aspects, tense/mood and must agree in gender and number \cite{snell}. There are many declensions and conjugations in Hindi, making the development of a morhpological analyzer useful.
+Hindi has an SOV grammar and a rich morphology. There are two genders, two numbers, and three cases (direct, oblique, and vocative) for nouns as well as two types of nouns (type-I and type-II) within these categories. Adjectives must agree with nouns in gender, case and number athough some do not decline at all. Verbs are marked with aspect, tense, mood, gender and number \cite{snell}. There are many declensions and conjugations in Hindi, making the development of a morhpological analyzer useful.
 \section{Past Work on the Morphology of Hindi}
 A seminal work on the grammar and morphology of Hindi is J.T. Platt's ``A grammar of the Hindustani or Urdu language'', written in 1873. In 1997 Rajendra Singh published ``Hindi morphology: a word-based description'', a work that intends to be a mostly comprehensive study of Hindi morphology. Reviewer Alan S. Kaye states that the book is less influential than Platt's and takes issue with a few details of the book. In addition to these, Shaligram Shukla's ``Hindi morphology'' is a good reference for information about Hindi morphology. Smriti Singh has published papers looking at Hindi's nominal and verbal morphology from the Distributed Morphology (DM). Together these resources offer a comprehensive view on the phenomena involved in Hindi morphology.\\
 \\
@@ -102,23 +96,23 @@ Hindi has main and auxiliary verbs.\\
 \\
 The verb होना \textit{hona} is the copula and has present, past, presumptive, and subjunctive forms.\\
 \begin{tabular}{l c l}
-\textbf{होना \textit{hona}} & \textbf{:} &\\
+होना \textbf{\textit{hona}} & \textbf{:} &\\
 Present tense& : &agrees with subject in number and person.\\
 Past tense& : &agrees with subject in gender and number.\\
 Presumptive form& : &agrees with person, gender and number.\\
 Subjunctive form& : &agrees in person and number.\\
 \end{tabular}
+\\
 There are three types of main verbs: simple verbs, conjunct verbs,
 and compound verbs. A simple verb may consist of one main verb
 and person, gender, number, tense, and aspect markers. In the
 compound verb construction, the person, gender, number, and aspect
 markers are taken by the explicators/operators, and in the conjunct
-verbal construction they are taken by the verb element. We will
-classify the verbal constructions as intransitive, transitive,
-ditransitive, causative, dative, conjunct, and compound. (Modern Hindi grammar)\\
-There are six tenses and three aspects. The product of three aspects with four tenses (present, past, presumptive, subjunctive) makes twelve aspectual-tenses. Non-aspectual verb forms include the future, root subjunctive, imperative and infinitive forms. In addition to these tenses and aspects Hindi has three moods: indicative, imperative, and optative. If that's not enough Hindi also has passive, indirect, and ``from/though'' voices, and that just finishes up all the finite verb forms!\\
+verbal construction they are taken by the verb element. The verbal constructions are intransitive, transitive,
+ditransitive, causative, dative, conjunct, and compound \cite{koul}.\\
+There are four tenses and three aspects. The product of three aspects with four tenses (present, past, presumptive, subjunctive) makes twelve aspectual-tenses. Non-aspectual verb forms include the future, root subjunctive, imperative and infinitive forms. In addition to these tenses and aspects Hindi has three moods: indicative, imperative, and optative. If that's not enough Hindi also has passive, indirect, and ``from/though'' voices, and that just finishes up all the finite verb forms!\\
 For non-finite verb forms Hindi has infinitives and perfective, imperfective, and conjunctive participles.\\
-All verbal forms will be very important for the analyzer to cover as they are so frequent.
+All verbal forms will be very important for the analyzer to cover as they are so frequent. Many of these contructions include more than one token as the verbs and explicators are split up. In this iteration of the analyzer I will only handle analysis at the token level. Thus each individual part of a verbal construction is analyzed by itself. Future work can leverage my lexicon and individual analyses to create full verbal analyses.
 \subsection{Derivational:}
 \subsubsection{Nouns:}
 Hindi has a set of of derivational prefixes and suffixes from Persian and Sanskrit that allow for \{noun, adjective, verb\} $\rightarrow$ noun derivations. These may be useful but are lower on the priority list than inflectional morphology.
@@ -141,6 +135,14 @@ postposition to a noun.\\
 (e) Particles are postpositions that be used to quantify and qualify things like time, weight, frequency, emphasis, etc.
 Adverbs would be good to analyze but fall behind nouns, adjectives and verbs in priority.
 \section{Initial Design}
+The initial design of the system includes the Hindi WordNet database as a lexicon and hand written rules based on the work in \cite{koul}. I present the tagsets for each part of speech below:\\
+\subsection{Adjectives}
+\subsection{Nouns}
+\subsection{Verbs}
+\subsection{Pronouns}
+\subsection{Postpositions}
+\subsection{Adverbs}
+
 
 \section{System Analysis on Corpus A}
 
@@ -151,9 +153,6 @@ Adverbs would be good to analyze but fall behind nouns, adjectives and verbs in 
 \section{Final Revisions}
 
 \section{Future Work}
-
-
-
 
 
 \bibliographystyle{plainnat}
