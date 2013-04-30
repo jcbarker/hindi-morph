@@ -35,8 +35,6 @@
 \newenvironment{itemizesquish}{\begin{list}{\setcounter{enumi}{0}\labelitemi}{\setlength{\itemsep}{-0.25em}\setlength{\labelwidth}{0.5em}\setlength{\leftmargin}{\labelwidth}\addtolength{\leftmargin}{\labelsep}}}{\end{list}}
 
 \bibpunct{(}{)}{;}{a}{,}{,}
-\newcommand{\nascomment}[1]{\textcolor{blue}{\textbf{[#1 --NAS]}}}
-
 
 \pagestyle{fancy}
 \lhead{}
@@ -84,7 +82,7 @@ The corpus I have chosen to use is UMC002 English-Hindi. This is a freely availa
 \section{Survey of Phenomena in Hindi}
 \subsection{Inflectional:}
 \subsubsection{Nouns:}
-Hindi nouns are inflected with gender, number, and case. There are three declensions for nouns: masculine nouns ending in आ \emph{/a:/}, all other masculine nouns, and feminine nouns. Inflected nouns are extremely common and as such will be important to cover.
+Hindi nouns are inflected with gender, number, and case. There are four declensions for nouns: masculine nouns ending in आ [ɑ], all other masculine nouns, feminine nouns ending in {ई [i], इया [ɪjɑ], इ [ɪ]}, all other feminine nouns. Inflected nouns are extremely common and as such will be important to cover.
 \subsubsection{Pronouns:}
 There are personal, demonstrative, relative, possesive, reflexive, interrogative, and indefinite pronouns in Hindi. 
 Personal pronouns have two numbers (singular and plural), and three persons, and are inflected for direct, dative, ergative, locative, ablative, and possesive/genitive cases. The second person pronouns can be divided into polite, familiar and intimaite (one of each). The third person pronouns can be divided into proximal and remote (one of each). When personal pronouns are inflected they attach the appropriate postposition as a suffix as well as stem changing (with the exception of the first and second person possessive/genitive forms). It will be important to segment these during morphological analysis.
@@ -135,25 +133,119 @@ postposition to a noun.\\
 (e) Particles are postpositions that be used to quantify and qualify things like time, weight, frequency, emphasis, etc.
 Adverbs would be good to analyze but fall behind nouns, adjectives and verbs in priority.
 \section{Initial Design}
-The initial design of the system includes the Hindi WordNet database as a lexicon and hand written rules based on the work in \cite{koul}. I present the tagsets for each part of speech below:\\
+The initial design of the system includes the Hindi WordNet database as a lexicon and hand written rules based on the work in \cite{koul}. The database provides me with about 123,000 lemmas and their respective word classes. I present the tagsets for each part of speech below:\\
 \subsection{Adjectives}
+\begin{verbatim}
++Adj 
++Sg 
++Pl 
++Masc 
++Fem
++Obl    ! Oblique
++Dir    ! Direct
+\end{verbatim}
 \subsection{Nouns}
+\begin{verbatim}
++N
++Sg 
++Pl
++Masc 
++Fem
++Obl    ! Oblique
++Dir    ! Direct
+\end{verbatim}
 \subsection{Verbs}
-\subsection{Pronouns}
-\subsection{Postpositions}
-\subsection{Adverbs}
+\begin{verbatim}
++V
+! Person
++1p
++2p
++3p
 
+! Gender
++Masc
++Fem
+
+!Number
++Sg
++Pl
+
+! Tense
++Pres
++Fut
++Past
+
+! Aspect
++Hab		! Habitual
++Prog		! Progressive
++Perf		! Perfective
+
+! Mood
++Imp		! Imperative
++Sub		! Subjunctive
+
+! Relation
++Int		! Intimate
++Fam		! Familiar
++Pol		! Polite
+\end{verbatim}
+\subsection{Pronouns}
+\begin{verbatim}
++Pronoun
++1p
++2p
++3p
++Sg
++Pl
++Prox   ! Proximal
++Rem    ! Remote
++Pol    ! Polite
++Fam    ! Familiar
++Int    ! Intimate
++Inf    ! Infinitive
++Dir
++Obl
++Dat    ! Dative
++Erg    ! Ergative
++Loc    ! Locative
++Abl    ! Ablative
++Gen    ! Genitive
+\end{verbatim}
+\subsection{Postpositions}
+\begin{verbatim}
++PP
++Masc
++Fem
++Sg
++Pl
++Gen
++Erg  
++Abl  ! Ablative
++Dat  ! Dative
+\end{verbatim}
+\subsection{Adverbs}
+\begin{verbatim}
++Adv
+\end{verbatim}
+
+I wrote the rules for these tags governing regular inflectional endings first, then created a file for irregularites. I then used priority union on the irregular rules with the regular rules, eliminating overgenerations. I had to make a few rules for processes like vowel deletion and glide insertion, but these are regular Hindi phonogical processes and work well. Another decision I made was to always start inflectional endings with the indepedent forms of vowels. A simple spelling rule allows me to translate them to matra (dependent forms) if needed.
 
 \section{System Analysis on Corpus A}
-
+Here I define accuracy to be whether or not the correct analysis existed in the analyzer output. Evaluation was done manually and due to time constraints only subsets of the corpora A and B were analyzed. The accuracy on a subset of corpus A (1000 types) is near 100\%, with almost no unhandled exceptions.
 \section{Lessons Learned and Revised Design}
-
+The few exceptions that were caught were errors in my coding of pronouns so I corrected them.\\
+I realized that some of the phonological rules for specific word classes I had written were redundant, and could be applied uniformly. \\
+I did not write rules for a few irregular nouns but they did not appear in the evaluation. I have added anyway for completeness.\\
+Generating an average of 14 analyses per word is sure to give such high accuracy, but would clearly not be beneficial in any downstream application without training a statistical model to rerank them. Adding more words to the lexicon will also help, but they may not be available without using some statistics to learn them.
 \section{System Analysis on Corpus B}
 
 \section{Final Revisions}
+I added a few more irregular verbs and nouns and alternate spellings. There was not much to be revised.
 
 \section{Future Work}
-
+In the future I would like to define a better evaluation metric involving a penalty for overgeneration. It is easy to overgenerate in Hindi because almost all inflections are vowels so any word ending in a vowel can be analyzed as a number of different forms. Also, due to invariant nouns and adjectives that can end in almost any vowel or consonant, there are a set of analyses that will be created for about any word. Getting a bigger lexicon will help to alleviate this but I would like to try training a statistical model to eliminate unlikely stems given their predicted word class.
+I would also like to handle the nonconcatenative morphology of some verb forms. This should be acheivable through the creation of another fst to combine verbal analyses into a single analysis.
+Other future work that would be interesting would be to handle derivational morphology.
 
 \bibliographystyle{plainnat}
 \bibliography{refs}
